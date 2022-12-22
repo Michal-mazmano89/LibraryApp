@@ -7,8 +7,8 @@ public class LibraryApp {
 
         System.out.println("---- Library App ----");
 
-        Scanner userIn = new Scanner(System.in);
 
+        Scanner userIn = new Scanner(System.in);
 
 
         Author king = new Author("Stephen", "King");
@@ -30,7 +30,7 @@ public class LibraryApp {
         booksList.add(guards);
         booksList.add(nile);
 
- ///*
+
         while(true) {
             showMainMenu();
             try {
@@ -71,6 +71,7 @@ public class LibraryApp {
                                 if (newAuthorHash == hash) {
                                     System.out.println("Author found.");
                                     newAuthor = a;
+                                    Author.decreaseAuthorID();
                                     authorCheckLoop = false;
                                     authorLoop = false;
 
@@ -114,23 +115,23 @@ public class LibraryApp {
                         System.out.println("Incorrect input. Try again");
                     }
 
-                }
+                    }
 
 
-                        } else if (userType == 0) {
-                            System.out.println("Bye bye.");
-                            break;
-                        } else {
-                            System.out.println("Unknown command.");
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Unknown command.");
-                        userIn.nextLine();
+                } else if (userType == 0) {
+                    System.out.println("Bye bye.");
+                    break;
+                } else {
+                    System.out.println("Unknown command.(wrong input in main menu)");
+                    }
+            } catch (Exception e) {
+                e.printStackTrace(System.out);
+                System.out.println("Exception for try under show main menu.");
+                System.out.println("Unknown command.");
+                userIn.nextLine();
                     }
                 }
             }
-
- //*/
 
 
 
@@ -153,14 +154,16 @@ public class LibraryApp {
             System.out.println("---(type q to quit)---");
             System.out.print("Type author's name: ");
             String authorTmpName = userIn.next();
+            System.out.println("Imie autora: " + authorTmpName);
             if (Objects.equals(authorTmpName, "q")){break;}
             userIn.nextLine();
             System.out.print("Type author's last name: ");
             String authorTmpLName = userIn.next();
-            userIn.nextLine();
+
+            System.out.println("Nazwisko autora: " + authorTmpLName);
             if (Objects.equals(authorTmpLName, "q")){break;}
             Author author = new Author(authorTmpName, authorTmpLName);
-            authorsList.add(i,author);
+            authorsList.add((i),author);
             System.out.println("Author added.");
         }
     }

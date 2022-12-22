@@ -1,6 +1,5 @@
 package pl.recstudio.library;
 
-import java.util.Locale;
 import java.util.Objects;
 
 public class Author {
@@ -11,17 +10,19 @@ public class Author {
     private static int ID = 0;
 
     public Author(String firstName, String lastName){
-        this.authorID = ID++;
+        this.authorID = ID;
         this.firstName = firstName;
         this.lastName = lastName;
+        ID++;
     }
+
 
     public String getInfo(){
         return authorID + " " + firstName + " " + lastName;
     }
 
-    public int getAuthorID(int givenID){
-        return authorID = givenID;
+    public static void decreaseAuthorID(){
+        ID--;
     }
 
     public static int getNextID(){return ID;}
