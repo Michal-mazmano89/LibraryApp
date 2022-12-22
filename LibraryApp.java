@@ -50,16 +50,20 @@ public class LibraryApp {
                     while(authorLoop){
                         System.out.println("AuthorLoop");
                         System.out.println("Type author's first name and last name like firstname/lastname: ");
+
+                    try {
+
                         String authorsName = userIn.next();
                         userIn.nextLine();
-                    try {
-                        String[] author = authorsName.split("/", 2); //If no errors change limit
-                        newAuthor = new Author(author[0], author[1]);
-                        int newAuthorHash = newAuthor.hashCode();
-                        System.out.println("Aktualny newAuthorHash: " + newAuthorHash);
-
                         boolean authorCheckLoop = true;
                         while (authorCheckLoop) {
+
+
+                            String[] author = authorsName.split("/", 2); //If no errors change limit
+                            newAuthor = new Author(author[0], author[1]);
+                            int newAuthorHash = newAuthor.hashCode();
+                            System.out.println("Aktualny newAuthorHash: " + newAuthorHash);
+
                             System.out.println("AuthorCheckLoop");
                             for (Author a : authorsList) {
                                 int hash = a.hashCode();
@@ -78,7 +82,7 @@ public class LibraryApp {
                                         System.out.println(Arrays.toString(Genre.values()));
                                         String bookGenre = userIn.next().toUpperCase();
                                         try {
-                                            for (Genre g : Genre.values()) {
+                                           for (Genre g : Genre.values()) {
                                                 if (bookGenre.equals(g.toString())) {
                                                     Book newBook = new Book(bookTitle, newAuthor, g);
                                                     booksList.add(newBook);
@@ -99,6 +103,12 @@ public class LibraryApp {
                       }
 
                             }
+
+                        if(authorCheckLoop){
+                            System.out.println("Author not found, please try again or add new author from main menu.");
+                            authorsName = userIn.next();
+                            userIn.nextLine();}
+
                         }
                     } catch (Exception e) {
                         System.out.println("Incorrect input. Try again");
