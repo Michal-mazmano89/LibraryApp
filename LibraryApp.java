@@ -48,6 +48,7 @@ public class LibraryApp {
 
                     boolean authorLoop = true;
                     while(authorLoop){
+                        System.out.println("AuthorLoop");
                         System.out.println("Type author's first name and last name like firstname/lastname: ");
                         String authorsName = userIn.next();
                         userIn.nextLine();
@@ -55,16 +56,20 @@ public class LibraryApp {
                         String[] author = authorsName.split("/", 2); //If no errors change limit
                         newAuthor = new Author(author[0], author[1]);
                         int newAuthorHash = newAuthor.hashCode();
+                        System.out.println("Aktualny newAuthorHash: " + newAuthorHash);
 
                         boolean authorCheckLoop = true;
                         while (authorCheckLoop) {
+                            System.out.println("AuthorCheckLoop");
                             for (Author a : authorsList) {
                                 int hash = a.hashCode();
+                                System.out.println("Aktualny hash: " + hash);
                                 if (newAuthorHash == hash) {
                                     System.out.println("Author found.");
                                     newAuthor = a;
                                     authorCheckLoop = false;
                                     authorLoop = false;
+
 
                                     boolean bookGenreLoop = true;
 
@@ -89,13 +94,10 @@ public class LibraryApp {
                                         }
 
 
-                                    }
+                                    } break;
 
-                                } else {
+                      }
 
-                                    System.out.println("Author not found. Please try again.");
-
-                                }
                             }
                         }
                     } catch (Exception e) {
