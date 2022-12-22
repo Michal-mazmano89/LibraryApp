@@ -48,7 +48,6 @@ public class LibraryApp {
 
                     boolean authorLoop = true;
                     while(authorLoop){
-                        System.out.println("AuthorLoop");
                         System.out.println("Type author's first name and last name like firstname/lastname: ");
 
                     try {
@@ -62,12 +61,9 @@ public class LibraryApp {
                             String[] author = authorsName.split("/", 2); //If no errors change limit
                             newAuthor = new Author(author[0], author[1]);
                             int newAuthorHash = newAuthor.hashCode();
-                            System.out.println("Aktualny newAuthorHash: " + newAuthorHash);
 
-                            System.out.println("AuthorCheckLoop");
                             for (Author a : authorsList) {
                                 int hash = a.hashCode();
-                                System.out.println("Aktualny hash: " + hash);
                                 if (newAuthorHash == hash) {
                                     System.out.println("Author found.");
                                     newAuthor = a;
@@ -97,19 +93,13 @@ public class LibraryApp {
                                         } catch (Exception e) {
                                             System.out.println("Genre not found, choose the closest genre.");
                                         }
-
-
                                     } break;
-
                       }
-
                             }
-
                         if(authorCheckLoop){
                             System.out.println("Author not found, please try again or add new author from main menu.");
                             authorsName = userIn.next();
                             userIn.nextLine();}
-
                         }
                     } catch (Exception e) {
                         System.out.println("Incorrect input. Try again");
@@ -122,12 +112,11 @@ public class LibraryApp {
                     System.out.println("Bye bye.");
                     break;
                 } else {
-                    System.out.println("Unknown command.(wrong input in main menu)");
+                    System.out.println("Unknown command. Please type number from main menu.");
                     }
             } catch (Exception e) {
                 e.printStackTrace(System.out);
-                System.out.println("Exception for try under show main menu.");
-                System.out.println("Unknown command.");
+                System.out.println("Something went wrong. Please try again.");
                 userIn.nextLine();
                     }
                 }
