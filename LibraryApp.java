@@ -5,10 +5,12 @@ import java.util.*;
 public class LibraryApp {
     public static void main(String[] args){
 
+
+
         System.out.println("---- Library App ----");
 
 
-        Scanner userIn = new Scanner(System.in);
+        Scanner userIn = new Scanner(System.in).useDelimiter("\\n");
 
 
         Author king = new Author("Stephen", "King");
@@ -44,7 +46,6 @@ public class LibraryApp {
                     Author newAuthor = null;
                     System.out.println("Type book's title: ");
                     bookTitle = userIn.next();
-                    userIn.nextLine();
 
                     boolean authorLoop = true;
                     while(authorLoop){
@@ -53,7 +54,6 @@ public class LibraryApp {
                     try {
 
                         String authorsName = userIn.next();
-                        userIn.nextLine();
                         boolean authorCheckLoop = true;
                         while (authorCheckLoop) {
 
@@ -68,6 +68,7 @@ public class LibraryApp {
                                     System.out.println("Author found.");
                                     newAuthor = a;
                                     Author.decreaseAuthorID();
+                                    System.out.println();
                                     authorCheckLoop = false;
                                     authorLoop = false;
 
@@ -98,8 +99,9 @@ public class LibraryApp {
                             }
                         if(authorCheckLoop){
                             System.out.println("Author not found, please try again or add new author from main menu.");
+                            Author.decreaseAuthorID();
                             authorsName = userIn.next();
-                            userIn.nextLine();}
+                        }
                         }
                     } catch (Exception e) {
                         System.out.println("Incorrect input. Try again");
@@ -148,10 +150,16 @@ public class LibraryApp {
             userIn.nextLine();
             System.out.print("Type author's last name: ");
             String authorTmpLName = userIn.next();
-
             System.out.println("Nazwisko autora: " + authorTmpLName);
             if (Objects.equals(authorTmpLName, "q")){break;}
             Author author = new Author(authorTmpName, authorTmpLName);
+            for(Author a: authorsList){
+                if(a.equals(author)){
+                    System.out.println("Author is already in database. Please try again with different data.");
+                    i--;
+                    break;
+                }
+            }
             authorsList.add((i),author);
             System.out.println("Author added.");
         }
