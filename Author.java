@@ -1,12 +1,14 @@
 package pl.recstudio.library;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Author {
+public class Author implements Serializable {
 
     private String firstName;
     private String lastName;
     private int authorID;
+
     private static int ID = 0;
 
     public Author(String firstName, String lastName){
@@ -16,7 +18,9 @@ public class Author {
         ID++;
     }
 
-
+    public static void setID(int newID) {
+        ID = newID;
+    }
     public String getInfo(){
         return authorID + " " + firstName + " " + lastName;
     }

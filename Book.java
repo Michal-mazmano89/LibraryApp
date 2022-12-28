@@ -1,6 +1,8 @@
 package pl.recstudio.library;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
     private String title;
     private Author author;
 
