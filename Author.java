@@ -1,6 +1,8 @@
 package pl.recstudio.library;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Author implements Serializable {
@@ -8,7 +10,6 @@ public class Author implements Serializable {
     private String firstName;
     private String lastName;
     private int authorID;
-
     private static int ID = 0;
 
     public Author(String firstName, String lastName){

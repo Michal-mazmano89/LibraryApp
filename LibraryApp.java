@@ -16,22 +16,21 @@ public class LibraryApp {
         List<Author> authorsList = new ArrayList<>();
         List<Book> booksList = new ArrayList<>();
 
-//        Author king = new Author("Stephen", "King");
-//        Author terry = new Author("Terry", "Pratchett");
-//        Author aghata = new Author("Aghata", "Christie");
-//
-//        Book carrie = new Book("Carrie", king, Genre.HORROR);
-//        Book guards = new Book("Guard! Guard!", terry, Genre.FANTASY);
-//        Book nile = new Book("Death on the Nile", aghata, Genre.MYSTERY);
-//
-//        authorsList.add(king);
-//        authorsList.add(terry);
-//        authorsList.add(aghata);
-//
-//        booksList.add(carrie);
-//        booksList.add(guards);
-//        booksList.add(nile);
+        Author king = new Author("Stephen", "King");
+        Author terry = new Author("Terry", "Pratchett");
+        Author aghata = new Author("Aghata", "Christie");
 
+        Book carrie = new Book("Carrie", king, Genre.HORROR);
+        Book guards = new Book("Guard! Guard!", terry, Genre.FANTASY);
+        Book nile = new Book("Death on the Nile", aghata, Genre.MYSTERY);
+
+        authorsList.add(king);
+        authorsList.add(terry);
+        authorsList.add(aghata);
+
+        booksList.add(carrie);
+        booksList.add(guards);
+        booksList.add(nile);
 
         while(true) {
             showMainMenu();
@@ -182,21 +181,20 @@ public class LibraryApp {
             System.out.println("---(type q to quit)---");
             System.out.print("Type author's name: ");
             String authorTmpName = userIn.next();
-            System.out.println("Imie autora: " + authorTmpName);
             if (Objects.equals(authorTmpName, "q")){break;}
+            System.out.println("Imie autora: " + authorTmpName);
             userIn.nextLine();
             System.out.print("Type author's last name: ");
             String authorTmpLName = userIn.next();
-            System.out.println("Nazwisko autora: " + authorTmpLName);
             if (Objects.equals(authorTmpLName, "q")){break;}
+            System.out.println("Nazwisko autora: " + authorTmpLName);
             Author author = new Author(authorTmpName, authorTmpLName);
-            for(Author a: authorsList){
-                if(a.equals(author)){
+                if(authorsList.contains(author)){
                     System.out.println("Author is already in database. Please try again with different data.");
                     i--;
-                    break;
+                    Author.decreaseAuthorID();
+                    continue;
                 }
-            }
             authorsList.add((i),author);
             System.out.println("Author added.");
         }
