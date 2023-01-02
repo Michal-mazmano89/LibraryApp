@@ -1,4 +1,4 @@
-package pl.recstudio.library;
+package pl.mazmano89.library;
 
 import java.io.*;
 import java.util.*;
@@ -63,11 +63,11 @@ public class LibraryApp {
 
     private static void saveData(List<Author> authorsList, List<Book> booksList) {
         try {
-            FileOutputStream is = new FileOutputStream("authorsBackup.ser");
+            FileOutputStream is = new FileOutputStream("src/pl/mazmano89/library/files/authorsBackup.ser");
             ObjectOutputStream os = new ObjectOutputStream(is);
             os.writeObject(authorsList);
 
-            FileOutputStream is2 = new FileOutputStream("booksBackup.ser");
+            FileOutputStream is2 = new FileOutputStream("src/pl/mazmano89/library/files/booksBackup.ser");
             ObjectOutputStream os2 = new ObjectOutputStream(is2);
             os2.writeObject(booksList);
             System.out.println("--- Author and book data exported into file(s) ---");
@@ -78,12 +78,12 @@ public class LibraryApp {
 
     private static void loadData(List<Author> authorsList, List<Book> booksList) throws IOException, ClassNotFoundException{
         try {
-            FileInputStream fisA = new FileInputStream("authorsBackup.ser");
+            FileInputStream fisA = new FileInputStream("src/pl/mazmano89/library/files/authorsBackup.ser");
             ObjectInputStream oisA = new ObjectInputStream(fisA);
             authorsList.clear();
             authorsList.addAll((List<Author>) oisA.readObject());
 
-            FileInputStream fisB = new FileInputStream("booksBackup.ser");
+            FileInputStream fisB = new FileInputStream("src/pl/mazmano89/library/files/booksBackup.ser");
             ObjectInputStream oisB = new ObjectInputStream(fisB);
             booksList.clear();
             booksList.addAll((List<Book>) oisB.readObject());
@@ -207,7 +207,7 @@ public class LibraryApp {
         System.out.println("Type 3 to list all books.");
         System.out.println("Type 4 to add a book.");
         System.out.println("Type 5 to save all authors and books into file.");
-        System.out.println("Type 6 to import all authors and books from file.");
+        System.out.println("Type 6 to import all authors and books from file (replaces all existing data!).");
         System.out.println("Type 0 quit.");
         System.out.print("Type here: ");
     }

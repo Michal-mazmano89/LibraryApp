@@ -1,4 +1,4 @@
-package pl.recstudio.library;
+package pl.mazmano89.library;
 
 public enum Genre {
     HORROR, FANTASY, MYSTERY

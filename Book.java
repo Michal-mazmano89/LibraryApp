@@ -1,4 +1,4 @@
-package pl.recstudio.library;
+package pl.mazmano89.library;
 
 import java.io.Serializable;
 
